@@ -1,0 +1,46 @@
+.admin {
+	background-color: #eee;
+}
+.adminContainer {
+	margin: 0 auto;
+	max-width: 1200px;
+	padding: 30px 0;
+}
+.adminNav {
+	display: flex;
+	background-color: #fff;
+	border-radius: 10px;
+}
+.admin-left {
+	padding: 10px 10px 10px 15px;
+	width: 25%;
+	border-right: 2px solid #eee;
+}
+
+.admin-left ul li {
+	padding: 10px 15px;
+	font-size: 2rem;
+	line-height: 1.5;
+	margin: 5px 0;
+}
+.isActive {
+	background-color: #1a9bfc;
+	border-radius: 10px;
+}
+.isActive a {
+	color: #fff !important;
+}
+.admin-left ul li a {
+	display: block;
+	color: #000;
+}
+.admin-left ul li:hover {
+	background-color: #eee;
+	border-radius: 10px;
+	cursor: pointer;
+	opacity: 0.6;
+}
+.isActive:hover {
+	background-color: #1a9bfc !important;
+	opacity: 1 !important;
+}

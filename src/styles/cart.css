@@ -1,0 +1,79 @@
+.productCarts {
+	background-color: #eee;
+	padding: 30px 0 30px 0;
+}
+.productCart {
+	max-width: 1200px;
+	margin: 0 auto;
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 15px 20px;
+	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.2);
+}
+.productCart h3 {
+	font-size: 2.3rem;
+	line-height: 1.5;
+	letter-spacing: 1.2px;
+	font-weight: 500;
+	border-bottom: 1px solid #eee;
+}
+.productCart table {
+	margin-top: 30px;
+	width: 100%;
+}
+.productCart table tr th {
+	font-size: 1.8rem;
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: 1.2px;
+	border-bottom: 1px solid #eee;
+}
+.productCart table tr td {
+	padding: 10px 10px;
+	text-align: center;
+	font-size: 1.5rem;
+	line-height: 1.2;
+	letter-spacing: 1.2px;
+	overflow: hidden;
+	border-bottom: 1px solid #eee;
+}
+.productCart table tr td .quantity {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.productCart table tr td .quantity input {
+	border: none;
+	background-color: transparent;
+	width: 50px;
+	font-size: 1.5rem;
+	text-align: center;
+}
+.productCart table tr td .quantity button {
+	margin: 0 8px;
+	padding: 6px 12px;
+	border: 1px solid rgb(247, 132, 132);
+	border-radius: 10px;
+	background-color: transparent;
+	font-size: 2.3rem;
+}
+.productCart table tr td:nth-child(1) {
+	width: 8%;
+}
+.productCart table tr td:nth-child(2) {
+	width: 120px;
+	height: 120px;
+	border-radius: 15px;
+	overflow: hidden;
+}
+.productCart table tr td:last-child {
+	width: 10%;
+}
+.productCart table tr td:last-child i {
+	background-color: red;
+	padding: 10px 20px;
+	border-radius: 5px;
+	box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+	color: #fff;
+	cursor: pointer;
+}

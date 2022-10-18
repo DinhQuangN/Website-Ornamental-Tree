@@ -1,0 +1,61 @@
+#content-page {
+	width: 100%;
+	padding: 30px 0 30px 0;
+	background: #eee;
+}
+.content-page {
+	max-width: 1200px;
+	margin: 0 auto;
+	background: #fff;
+	padding: 20px 20px;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+}
+.content-page h3 {
+	font-size: 2.3rem;
+	font-weight: 300;
+	line-height: 1.5;
+	letter-spacing: 0.1rem;
+	border-bottom: 1px solid #eee;
+}
+.content-page button {
+	margin: 20px 10px 0 0;
+	border: none;
+	border-radius: 2px;
+	padding: 10px 10px;
+	color: #fff;
+	font-size: 1.5rem;
+	letter-spacing: 0.1rem;
+	background: #1877f2;
+}
+.content-page button:hover {
+	background: #385898;
+}
+.content-page .content-beautiful h4 {
+	font-size: 2.1rem;
+	line-height: 1.5;
+	letter-spacing: 0.1rem;
+	margin-top: 30px;
+	font-weight: 500;
+	text-transform: capitalize;
+}
+.content-page .content-beautiful p {
+	font-size: 1.4rem;
+	margin: 20px 0 0 10px;
+	line-height: 1.5;
+	letter-spacing: 0.1rem;
+}
+.content-page .submit {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #f28902;
+}
+.content-page .shop-product {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(20.3%, 1fr));
+	column-gap: 20px;
+	row-gap: 30px;
+}

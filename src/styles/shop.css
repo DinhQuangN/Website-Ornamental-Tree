@@ -1,0 +1,147 @@
+#bg-dark {
+	background: #eee;
+	padding-bottom: 30px;
+}
+.shops {
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 5px;
+	padding-top: 30px;
+}
+.container {
+	align-items: flex-start !important;
+}
+.menu {
+	width: 300px;
+	box-shadow: 0px 0px 8px 0 #0000002c;
+}
+.menu-left .accordian-ul li {
+	width: 100%;
+}
+.menu-left .accordian-ul li h3 {
+	font-size: 1.5rem;
+	padding: 10px 10px;
+	background: #090;
+	line-height: 1.5;
+	letter-spacing: 0.1rem;
+	font-weight: 500;
+	text-transform: capitalize;
+	color: #fff;
+}
+.menu-left .accordian-ul li ul li {
+	padding: 8px 10px;
+	background: #fff;
+	border-bottom: 1px solid #eee;
+	transition: 0.3s;
+}
+.menu-left .accordian-ul li ul li:hover {
+	background: #eee;
+}
+.menu-left .accordian-ul li ul li:hover a {
+	color: #f28902;
+}
+.menu-left .accordian-ul li ul li a {
+	font-size: 1.4rem;
+	line-height: 1.5;
+	letter-spacing: 0.1rem;
+	text-transform: capitalize;
+	color: #000;
+}
+.shop {
+	width: 100%;
+	padding: 0 0 0 15px;
+}
+.shop .title {
+	border-bottom: 1.5px solid #f28902;
+	margin-bottom: 10px;
+}
+.shop .title a {
+	font-size: 2rem;
+	color: #f28902;
+	line-height: 1.5;
+	letter-spacing: 0.1rem;
+	font-weight: 500;
+}
+.shops .shop-product {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(30.3%, 1fr));
+	column-gap: 10px;
+	row-gap: 20px;
+}
+.shop-product .product {
+	background: #fff;
+	border-radius: 5px;
+	box-shadow: 0px 0px 8px 0 #0000002c;
+	padding: 0 0 15px 0;
+	overflow: hidden;
+}
+.shop-product .product .pic-news {
+	width: 100%;
+	position: relative;
+	background: #fff;
+	overflow: hidden;
+}
+.shop-product .product .pic-news a {
+	width: 500px;
+	height: 270px;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	transition: 0.3s all ease;
+}
+.shop-product .product .pic-news a img {
+	overflow: hidden;
+}
+.shop-product .product .pic-news a:hover {
+	transform: scale(1.2);
+}
+.shop-product .product h3 {
+	margin-top: 15px;
+}
+.shop-product .product h3 a {
+	font-size: 1.6rem;
+	line-height: 1;
+	letter-spacing: 0.1rem;
+	font-weight: 500;
+	transition: 0.3s all ease;
+	padding: 0 0 0 15px;
+}
+.shop-product .product h3 a:hover {
+	color: #f28902;
+}
+.shop-product .product .col-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 0 0 0;
+}
+.shop-product .product .price-product {
+	padding: 10px 0 10px 15px;
+	width: calc(100% - 150px);
+	font-size: 2rem;
+	color: #f00;
+	font-weight: 300;
+}
+.shop-product .product .cart-product {
+	margin-right: 15px;
+}
+.shop-product .product .cart-product a {
+	width: 42px;
+	background: #f28902;
+	text-align: center;
+	padding: 10px 0 6px 0;
+	margin: 0 3px;
+	transition: 0.3s all ease;
+	border-radius: 3px;
+	box-shadow: 0px 0px 8px 0 #0000002c;
+}
+.shop-product .product .cart-product a:hover {
+	background-color: #090;
+}
+.shop-product .product .cart-product a i {
+	padding: 15px 10px;
+	font-size: 1.5rem;
+	color: #fff;
+}

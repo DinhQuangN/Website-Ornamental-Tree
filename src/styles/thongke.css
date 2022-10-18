@@ -1,0 +1,21 @@
+.adminRight {
+	width: 100%;
+	margin-top: 30px;
+}
+.adminTab {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	column-gap: 20px;
+	width: 100%;
+	margin-left: 1px;
+}
+.adminItem {
+	box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 5px;
+	padding: 10px 5px;
+}
+.adminItem h2 {
+	font-size: 1.7rem;
+	font-weight: 500;
+	line-height: 1.5;
+}

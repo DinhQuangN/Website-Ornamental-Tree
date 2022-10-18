@@ -1,0 +1,138 @@
+#details {
+	width: 100%;
+	padding: 30px 0 30px 0;
+	background: #eee;
+}
+.details {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: grid;
+	background: #fff;
+	grid-template-columns: 30% 1.2fr 1fr;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 3px;
+}
+.product-pic {
+	padding: 20px 20px;
+}
+.product-pic .frame-pic {
+	border-radius: 3px;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+	overflow: hidden;
+	height: 350px;
+}
+.detail .swiper-slide {
+	width: 80px;
+	height: 80px;
+	border: 1px solid #f28902;
+	overflow: hidden;
+	border-radius: 5px;
+	margin-top: 30px;
+}
+.detail:hover .swiper-button-prev,
+.detail:hover .swiper-button-next {
+	transform: translateX(0px);
+}
+.detail .swiper-button-next,
+.detail .swiper-button-prev {
+	width: 30px !important;
+	height: 20px !important;
+	overflow: hidden;
+	transition: 0.3s;
+	margin-top: 5px;
+	color: #eee;
+	background-color: #f28902;
+	border-radius: 3px;
+}
+.detail .swiper-button-prev {
+	transform: translateX(-50px);
+	transition: 0.3s;
+}
+.detail .swiper-button-next {
+	transform: translateX(50px);
+	transition: 0.3s;
+}
+.detail .swiper-button-next:after,
+.detail .swiper-button-prev::after {
+	color: #fff;
+	font-size: 2rem !important;
+}
+.details .product-comment {
+	padding: 20px 10px 0 5px;
+}
+.details .product-comment h3 {
+	font-size: 2.5rem;
+	text-transform: capitalize;
+	font-weight: 500;
+	line-height: 1.5;
+	letter-spacing: 0.1rem;
+}
+.details .product-comment p {
+	margin-top: 10px;
+	font-size: 1.6rem;
+	font-weight: 400;
+	line-height: 1.5;
+	letter-spacing: 0.05rem;
+}
+.details .product-comment p span {
+	color: red;
+	font-size: 2rem;
+}
+.details .product-comment .product-cart {
+	padding: 20px 0 15px 0;
+	margin-bottom: 30px;
+}
+.details .product-comment .product-cart .quantity {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-bottom: 30px;
+}
+.details .product-comment .product-cart .quantity button {
+	border: 1px solid #eee;
+	font-size: 3.5rem;
+	font-weight: 500;
+	padding: 0 15px;
+	border-radius: 50%;
+	background: transparent;
+	color: #000;
+	cursor: pointer;
+	box-shadow: none;
+}
+.details .product-comment .product-cart .quantity p {
+	margin: 5px 20px;
+	padding: 5px 20px;
+	border-bottom: 3px solid #eee;
+}
+.details .product-comment .product-cart a {
+	margin: 30px 20px 0 0;
+	padding: 10px 10px;
+	border: none;
+	background: #f28902;
+	color: #fff;
+	font-size: 2rem;
+	cursor: pointer;
+	font-weight: 300;
+	border-radius: 2px;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+}
+.details .product-commit .commit {
+	margin: 20px 20px 0 0;
+	background: #eee;
+	padding: 20px 20px;
+	border-radius: 2px;
+	box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+}
+.details .product-commit .commit h3 {
+	font-size: 2rem;
+	text-transform: capitalize;
+	font-weight: 500;
+	line-height: 1.5;
+	letter-spacing: 0.1rem;
+}
+.details .product-commit .commit p {
+	margin-top: 15px;
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.5;
+}
