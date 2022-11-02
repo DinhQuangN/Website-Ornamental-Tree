@@ -41,7 +41,6 @@ const Detail: React.FC = () => {
 			setRes(data);
 		}
 	}, [lengthProduct, productDetail?.category]);
-	console.log(res);
 	return (
 		<>
 			{productDetail && <DisplayProduct product={productDetail} />}
