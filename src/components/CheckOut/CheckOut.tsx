@@ -83,7 +83,7 @@ const CheckOut: React.FC<IProps> = ({ setOpen, totalMoney }) => {
 		stripeToken && makeRequest();
 		setStripeToken('');
 		setOpen(false);
-		sessionStorage.removeItem('carts');
+		// sessionStorage.removeItem('carts');
 	}, [stripeToken, totalMoney]);
 
 	return (

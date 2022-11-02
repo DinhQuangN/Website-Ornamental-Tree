@@ -23,7 +23,7 @@ const ProductRight: React.FC<IProps> = ({ product }) => {
 			<div className="col-row">
 				<div className="price-product">{vnd(product.price)}đ</div>
 				<div className="cart-product">
-					<Link to="/cart" onClick={handleClick}>
+					<Link to="/gio-hang" onClick={handleClick}>
 						<i className="fas fa-shopping-cart"></i>
 					</Link>
 					<Link to={`/san-pham/${product._id}`}>
