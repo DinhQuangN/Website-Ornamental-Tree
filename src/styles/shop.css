@@ -145,3 +145,25 @@
 	font-size: 1.5rem;
 	color: #fff;
 }
+@media only screen and (max-width: 762px) {
+	.menu {
+		display: none;
+	}
+	.shops .shop-product {
+		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+		column-gap: 10px;
+		row-gap: 20px;
+	}
+}
+@media only screen and (max-width: 920px) {
+	.shops .shop-product {
+		grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+	}
+}
+@media only screen and (max-width: 420px) {
+	.shops .shop-product {
+		grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
+	}
+}

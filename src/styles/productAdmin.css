@@ -35,7 +35,8 @@
 }
 .productAdminSearch i {
 	font-size: 1.6rem;
-	padding: 0 15px 0 5px;
+	padding: 5px 15px 5px 5px;
+	cursor: pointer;
 	/* font-weight: 500 !important; */
 }
 .productAdminTable {
@@ -49,7 +50,7 @@
 	border-radius: 10px;
 	margin-bottom: 20px;
 }
-.productTable table tr:nth-child(even) {
+.productTable table tbody tr:nth-child(even) {
 	background-color: #eee;
 }
 .productTable table tr {
