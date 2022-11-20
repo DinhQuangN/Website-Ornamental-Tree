@@ -52,7 +52,7 @@ const FormProduct: React.FC = () => {
 	return (
 		<div className="productAdmin">
 			<div className="productAdminNav">
-				<button onClick={handleCreate}>Thêm loại sản phẩm</button>
+				<button onClick={handleCreate}>Thêm sản phẩm</button>
 				<div className="productAdminSearch">
 					<input
 						type="text"

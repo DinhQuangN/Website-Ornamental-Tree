@@ -1,6 +1,7 @@
 import accessoryRouter from './accessoryRouter';
 import authRouter from './authRouter';
 import categoryRouter from './categoryRouter';
+import orderRouter from './orderRouter';
 import productRouter from './productRouter';
 import sliderRouter from './sliderRouter';
 import totalRouter from './totalRouter';
@@ -11,6 +12,7 @@ const routes = [
 	categoryRouter,
 	productRouter,
 	sliderRouter,
-	totalRouter
+	totalRouter,
+	orderRouter
 ];
 export default routes;

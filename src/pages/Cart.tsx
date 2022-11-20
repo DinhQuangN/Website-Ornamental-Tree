@@ -20,7 +20,7 @@ const Cart: React.FC = () => {
 	let total: number = 0;
 	const showTotal = (cart: ICartType[]) => {
 		cart.forEach(e => {
-			total += e.price * e.quantity;
+			total += Number(e.price) * e.quantity;
 		});
 		return total;
 	};
@@ -83,7 +83,7 @@ const Cart: React.FC = () => {
 											</div>
 										</td>
 										<td style={{ fontWeight: 500, letterSpacing: '0.8px' }}>
-											{vnd(item.quantity * item.price)} đ
+											{vnd(item.quantity * Number(item.price))} đ
 										</td>
 										<td>
 											<button

@@ -1,5 +1,6 @@
 import { TextField } from '@mui/material';
 import React, { useEffect, useRef, useState } from 'react';
+import { toast } from 'react-toastify';
 import { createProduct } from '../../../features/Product/ProductSlice';
 import { updateProducts } from '../../../features/Product/productsSlice';
 import {
@@ -13,6 +14,7 @@ import {
 	InputChange,
 	IProduct
 } from '../../../utils/TypeScript';
+import { checkProduct } from '../../../utils/Valid';
 import ReactQuill from '../Editor/ReactQuill';
 
 interface IProps {
@@ -34,7 +36,7 @@ const CreateUpdateProduct: React.FC<IProps> = ({
 		user: '',
 		title: '',
 		describe: '',
-		price: 0,
+		price: '',
 		imageArray: image,
 		detail: '',
 		category: ''
@@ -81,7 +83,9 @@ const CreateUpdateProduct: React.FC<IProps> = ({
 			imageArray: image
 		};
 		if (!auth.data?.access_token) return;
-		if (!productId) {
+		const data = checkProduct(newData);
+		toast.error(data);
+		if (!productId && !data) {
 			dispatch(
 				createProduct({ ...newData, access_token: auth.data.access_token })
 			);
@@ -188,6 +192,18 @@ const CreateUpdateProduct: React.FC<IProps> = ({
 						</option>
 					))}
 				</select>
+				<button
+					style={{
+						color: '#000',
+						border: '1px solid #000',
+						backgroundColor: 'transparent',
+						fontWeight: '500',
+						marginLeft: '15px'
+					}}
+					onClick={() => setClose(true)}
+				>
+					Cancel
+				</button>
 				<button onClick={handleOnClick}>Save</button>
 			</div>
 		</div>

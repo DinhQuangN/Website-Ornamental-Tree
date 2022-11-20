@@ -19,7 +19,7 @@ export interface IProduct extends IAccessToken {
 	user: IUser | string;
 	title: string;
 	describe: string;
-	price: number;
+	price: string;
 	imageArray: IImage[];
 	detail: string;
 	category: ICategory | string;
@@ -77,4 +77,17 @@ export interface IAccessToken {
 }
 export interface ICart extends IProduct {
 	quantity: number;
+}
+export interface IOrder {
+	name: string;
+	total: number;
+	address: string;
+	status: string;
+	email: string;
+	products: ICart[];
+	createdAt?: string;
+}
+export interface IOrders {
+	products: IOrder[];
+	total: number;
 }

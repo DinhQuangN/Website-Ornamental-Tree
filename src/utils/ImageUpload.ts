@@ -1,5 +1,5 @@
 export const checkImage = (file: File) => {
-	const types = ['image/png', 'image/jpeg'];
+	const types = ['image/png', 'image/jpeg', 'image/jpg'];
 	let err = '';
 	if (!file) return (err = 'File does not exist.');
 	if (file.size > 1024 * 1024)

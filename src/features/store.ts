@@ -17,7 +17,8 @@ const store = configureStore({
 		productByCategory: ProductByCategorySlice,
 		cart: CartSlice,
 		products: productsSlice
-	}
+	},
+	devTools: false
 });
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

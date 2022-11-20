@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { useAppSelector } from '../../hooks/useTypedSelector';
 import { postAPI } from '../../Request';
 import { FormSubmit, InputChange } from '../../utils/TypeScript';
 import { vnd } from '../../utils/Valid';
@@ -37,6 +38,7 @@ const CheckOut: React.FC<IProps> = ({ setOpen, totalMoney }) => {
 	};
 	const [stripeToken, setStripeToken] = useState<string | undefined>();
 	const [data, setData] = useState(initialState);
+	const { auth, cart } = useAppSelector(state => state);
 	const { name, describe, address, email } = data;
 	const handleOnChange = (e: InputChange) => {
 		const { name, value } = e.target;
@@ -83,9 +85,24 @@ const CheckOut: React.FC<IProps> = ({ setOpen, totalMoney }) => {
 		stripeToken && makeRequest();
 		setStripeToken('');
 		setOpen(false);
-		// sessionStorage.removeItem('carts');
 	}, [stripeToken, totalMoney]);
-
+	useEffect(() => {
+		stripeToken &&
+			setTimeout(async () => {
+				await postAPI(
+					'createOrder',
+					{
+						name,
+						products: cart,
+						describe,
+						totalMoney,
+						address,
+						email
+					},
+					auth.data?.access_token
+				);
+			}, 2500);
+	}, [stripeToken]);
 	return (
 		<form className="check_out-form" onSubmit={handleSubmit}>
 			<fieldset className="check_out-form-group">
@@ -126,7 +143,7 @@ const CheckOut: React.FC<IProps> = ({ setOpen, totalMoney }) => {
 				</div>
 			</fieldset>
 			<button type="submit" disabled={!stripe || !elements}>
-				Pay {vnd(totalMoney)}
+				Pay {vnd(totalMoney)} đ
 			</button>
 		</form>
 	);

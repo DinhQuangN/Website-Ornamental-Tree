@@ -1,16 +1,61 @@
-import { ICategory, IRegisterUser } from './TypeScript';
+import { ICategory, IProduct, IRegisterUser } from './TypeScript';
 
 export const checkCategory = (data: ICategory) => {
 	if (data.name.length === 0 && data.role === 0) {
 		return 'Vui lòng nhập thông tin cho tên loại sản phẩm và chọn trường loại sản phẩm';
 	} else if (data.name.length > 0 && data.role === 0) {
 		return 'Vui lòng chọn trường loại sản phẩm';
-	} else if (data.name.length === 0 && (data.role === 1 || data.role === 2)) {
-		return 'Vui lòng nhập thông tin cho tên loại sản phẩm ';
+	} else if (data.name.length === 0 && data.role !== 0) {
+		return 'Vui lòng nhập thông tin trong trường tên loại sản phẩm ';
+	} else if (data.name.match(/^\s+$/) !== null && data.role !== 0) {
+		return 'Vui lòng nhập thông tin trong trường tên loại sản phẩm ';
 	} else if (checkSpecialCharacters(data.name)) {
 		return 'Vui lòng không nhập kí tự đặc biệt trong trường loại sản phẩm';
-	} else if (data.name.length > 50) {
-		return 'Vui lòng không nhập quá 50 kí tự';
+	} else if (data.name.length > 100 && data.role !== 0) {
+		return 'Vui lòng không nhập quá 100 kí tự';
+	}
+};
+export const checkProduct = (data: IProduct) => {
+	data.imageArray.map(item => console.log(item === undefined));
+	if (data.title.length === 0) {
+		return 'Bạn vui lòng nhập tên sản phẩm';
+	} else if (data.title.match(/^\s+$/) !== null) {
+		return 'Bạn vui lòng nhập tên sản phẩm';
+	} else if (data.title.length > 100) {
+		return 'Bạn vui lòng nhập tên sản phẩm < 100 kí tự';
+	} else if (checkSpecialCharacters(data.title) || data.title.match(/\d/gi)) {
+		return 'Vui lòng không nhập kí tự đặc biệt hoặc kí tự số';
+	} else if (data.describe.length === 0) {
+		return 'Bạn vui lòng nhập mô tả sản phẩm';
+	} else if (data.describe.match(/^\s+$/) !== null) {
+		return 'Bạn vui lòng nhập mô tả sản phẩm';
+	} else if (data.describe.length > 255) {
+		return 'Bạn vui lòng nhập mô tả sản phẩm < 255 kí tự';
+	} else if (checkSpecialCharacters(data.describe)) {
+		return 'Bạn vui lòng nhập mô tả sản phẩm không chứa kí tự đặc biệt ';
+	} else if (data.price.length === 0) {
+		return 'Bạn vui lòng nhập giá sản phẩm';
+	} else if (data.price.match(/^\s+$/) !== null) {
+		return 'Bạn vui lòng nhập giá sản phẩm';
+	} else if (data.price.length > 15) {
+		return 'Bạn vui lòng không nhập giá sản phẩm > 15 kí tự ';
+	} else if (
+		checkSpecialCharacters(data.price) ||
+		data.price.match(/[a-z]/gi)
+	) {
+		return 'Bạn vui lòng nhập giá sản phẩm không chứa kí tự đặc biệt hoặc kí tự chữ ';
+	} else if (data.imageArray.length === 0) {
+		return 'Bạn chưa chọn ảnh nào cho sản phẩm';
+	} else if (data.imageArray[0].image === undefined) {
+		return 'Bạn vui lòng chọn ảnh có đuôi jpg, jpeg, png';
+	} else if (data.detail.length === 0) {
+		return 'Bạn vui lòng nhập chi tiết sản phẩm';
+	} else if (data.detail.match(/^\s+$/) !== null) {
+		return 'Bạn vui lòng nhập chi tiết sản phẩm';
+	} else if (data.detail.length > 5000) {
+		return 'Bạn vui lòng nhập chi tiết sản phẩm < 5000 kí tự';
+	} else if (!data.category) {
+		return 'Bạn vui lòng phân biệt chọn loại sản phẩm';
 	}
 };
 

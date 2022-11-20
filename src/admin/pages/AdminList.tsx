@@ -29,7 +29,7 @@ const AdminList: React.FC<IAdminList> = ({
 					<Link to="/admin/slider">Slider</Link>
 				</li>
 				<li className={order}>
-					<Link to="/admin/order">Order</Link>
+					<Link to="/admin/order">Hóa đơn</Link>
 				</li>
 				<li className={category}>
 					<Link to="/admin/loai-san-pham">Loại sản phẩm</Link>

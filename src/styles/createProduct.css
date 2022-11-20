@@ -77,3 +77,14 @@ select option {
 .createProducts button:hover {
 	background-color: rgb(9, 128, 76);
 }
+.createProducts::-webkit-scrollbar {
+	opacity: 0.6;
+}
+.createProducts::-webkit-scrollbar-thumb {
+	background: #d3d3d3;
+	opacity: 0.6;
+	border-radius: 15px;
+}
+.createProducts::-webkit-scrollbar-thumb:hover {
+	background: #ccc;
+}

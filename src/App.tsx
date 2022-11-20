@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import AccessoryAdmin from './admin/components/Accessory/Accessory';
 import CategoryAdmin from './admin/components/Category/Category';
+import OrderAdmin from './admin/components/Order/Order';
 import ProductAdmin from './admin/components/Product/Product';
 import SliderAdmin from './admin/components/Slider/Slider';
 import Manager from './admin/pages/Manager';
@@ -57,6 +58,7 @@ const App: React.FC = () => {
 						<Route path="loai-san-pham" element={<CategoryAdmin />} />
 						<Route path="san-pham" element={<ProductAdmin />} />
 						<Route path="slider" element={<SliderAdmin />} />
+						<Route path="order" element={<OrderAdmin />} />
 					</Route>
 				</Routes>
 				<Footer />

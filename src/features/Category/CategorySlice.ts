@@ -44,7 +44,6 @@ export const deleteCategory = createAsyncThunk(
 	async (data: IAccessToken, thunkApi) => {
 		try {
 			await deleteAPI(`delete_category/${data.productId}`, data.access_token);
-			window.location.href = '/admin/loai-san-pham';
 		} catch (error: any) {
 			return thunkApi.rejectWithValue(error.message);
 		}

@@ -42,11 +42,21 @@ export interface IProduct extends Document {
 	user: IUser;
 	title: string;
 	describe: string;
-	price: number;
+	price: string;
 	imageArray: string[];
 	detail: string;
 	category: ICategory;
 }
 export interface ISlider {
 	image: string;
+}
+export interface IOrder extends Document {
+	userId: IUser;
+	name: string;
+	email: string;
+	products: string[];
+	total: number;
+	address: string;
+	describe: string;
+	status: string;
 }

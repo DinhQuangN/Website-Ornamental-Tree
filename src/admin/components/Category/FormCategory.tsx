@@ -28,6 +28,7 @@ const FormCategory: React.FC = () => {
 			dispatch(
 				deleteCategory({ productId: id, access_token: auth.data?.access_token })
 			);
+			window.location.href = '/admin/loai-san-pham';
 		}
 	};
 	const handleSearch = () => {};

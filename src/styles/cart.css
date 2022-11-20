@@ -91,7 +91,7 @@
 }
 .check_out .check_out-form {
 	width: 40%;
-	height: 50%;
+	height: 60%;
 	background-color: #fff;
 	border-radius: 20px;
 	box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
@@ -144,6 +144,9 @@
 	font-size: 17px;
 	padding-left: 15px;
 	margin-bottom: 10px;
+}
+.check_out-form-column input:first-child {
+	margin-top: 15px;
 }
 .check_out-form-column input:focus {
 	outline: none;
