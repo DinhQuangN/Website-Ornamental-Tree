@@ -1,7 +1,16 @@
-import { ICategory, IProduct, IRegisterUser } from './TypeScript';
+import { ICate } from '../admin/components/Category/CreateUpdateCategory';
+import { ICheckOut, IProduct, IRegisterUser } from './TypeScript';
 
-export const checkCategory = (data: ICategory) => {
-	if (data.name.length === 0 && data.role === 0) {
+export const checkCategory = (data: ICate) => {
+	if (data.id.length === 0) {
+		return 'Vui lòng nhập mã loại sản phẩm';
+	} else if (data.id.length > 50) {
+		return 'Vui lòng nhập < 50 kí tự';
+	} else if (checkSpecialCharacters(data.id)) {
+		return 'Vui lòng không nhập kí tự đặc biệt trong trường mã loại sản phẩm';
+	} else if (data.id.match(/^\s+$/) !== null) {
+		return 'Vui lòng nhập mã loại sản phẩm';
+	} else if (data.name.length === 0 && data.role === 0) {
 		return 'Vui lòng nhập thông tin cho tên loại sản phẩm và chọn trường loại sản phẩm';
 	} else if (data.name.length > 0 && data.role === 0) {
 		return 'Vui lòng chọn trường loại sản phẩm';
@@ -16,22 +25,21 @@ export const checkCategory = (data: ICategory) => {
 	}
 };
 export const checkProduct = (data: IProduct) => {
-	data.imageArray.map(item => console.log(item === undefined));
 	if (data.title.length === 0) {
 		return 'Bạn vui lòng nhập tên sản phẩm';
-	} else if (data.title.match(/^\s+$/) !== null) {
+	} else if (data.title.match(/^\s*$/g) !== null) {
 		return 'Bạn vui lòng nhập tên sản phẩm';
 	} else if (data.title.length > 100) {
 		return 'Bạn vui lòng nhập tên sản phẩm < 100 kí tự';
-	} else if (checkSpecialCharacters(data.title) || data.title.match(/\d/gi)) {
+	} else if (checkSpecialCharacters(data.title) || data.title.match(/\d+S/gi)) {
 		return 'Vui lòng không nhập kí tự đặc biệt hoặc kí tự số';
 	} else if (data.describe.length === 0) {
 		return 'Bạn vui lòng nhập mô tả sản phẩm';
-	} else if (data.describe.match(/^\s+$/) !== null) {
+	} else if (data.describe.slice(3, 4).match(/^\s+$/) !== null) {
 		return 'Bạn vui lòng nhập mô tả sản phẩm';
 	} else if (data.describe.length > 255) {
 		return 'Bạn vui lòng nhập mô tả sản phẩm < 255 kí tự';
-	} else if (checkSpecialCharacters(data.describe)) {
+	} else if (checkSpecialCharacters(data.describe.slice(3, 4))) {
 		return 'Bạn vui lòng nhập mô tả sản phẩm không chứa kí tự đặc biệt ';
 	} else if (data.price.length === 0) {
 		return 'Bạn vui lòng nhập giá sản phẩm';
@@ -50,8 +58,10 @@ export const checkProduct = (data: IProduct) => {
 		return 'Bạn vui lòng chọn ảnh có đuôi jpg, jpeg, png';
 	} else if (data.detail.length === 0) {
 		return 'Bạn vui lòng nhập chi tiết sản phẩm';
-	} else if (data.detail.match(/^\s+$/) !== null) {
+	} else if (data.detail.slice(3, 4).match(/^\s+$/) !== null) {
 		return 'Bạn vui lòng nhập chi tiết sản phẩm';
+	} else if (checkSpecialCharacters(data.detail.slice(3, 4))) {
+		return 'Bạn vui lòng nhập chi tiết sản phẩm không chứa kí tự đặc biệt';
 	} else if (data.detail.length > 5000) {
 		return 'Bạn vui lòng nhập chi tiết sản phẩm < 5000 kí tự';
 	} else if (!data.category) {
@@ -59,6 +69,36 @@ export const checkProduct = (data: IProduct) => {
 	}
 };
 
+export const checkOrder = (data: ICheckOut) => {
+	if (data.name.length === 0) {
+		return 'Bạn vui lòng nhập họ và tên';
+	} else if (data.name.length > 50) {
+		return 'Bạn vui lòng nhập họ và tên < 50 kí tự';
+	} else if (data.name.match(/\d+S/gi) || checkSpecialCharacters(data.name)) {
+		return 'Bạn vui lòng không nhập kí tự đặc biệt hoặc kí tự số trong trường họ và tên';
+	} else if (data.email.length === 0) {
+		return 'Bạn vui lòng nhập số điện thoại';
+	} else if (data.email.length > 12) {
+		return 'Bạn vui lòng nhập số điện thoại < 12 kí tự';
+	} else if (
+		data.email.match(/[a-z]/gi) ||
+		checkSpecialCharacters(data.email)
+	) {
+		return 'Bạn vui lòng không nhập kí tự chữ hoặc kí tự đặc biệt trong trường số điện thoại';
+	} else if (data.address.length === 0) {
+		return 'Bạn vui lòng nhập địa chỉ';
+	} else if (data.address.length > 256) {
+		return 'Bạn vui lòng nhập địa chỉ < 256 kí tự';
+	} else if (checkSpecialCharacters(data.address)) {
+		return 'Bạn vui lòng không nhập kí tự đặc biệt trong trường địa chỉ';
+	} else if (data.describe.length === 0) {
+		return 'Bạn vui lòng nhập mô tả';
+	} else if (data.describe.length > 512) {
+		return 'Bạn vui lòng nhập mô tả < 512 kí tự trong trường mô tả';
+	} else if (checkSpecialCharacters(data.describe)) {
+		return 'Bạn vui lòng không nhập kí tự đặc biệt trong trường mô tả';
+	}
+};
 const checkSpecialCharacters = (data: string) => {
 	const format = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
 	if (data.match(format)) {

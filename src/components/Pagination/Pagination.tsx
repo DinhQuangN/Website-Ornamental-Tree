@@ -23,7 +23,7 @@ const Pagination: React.FC<IProps> = ({ totalPage, callback }) => {
 				count={totalPage}
 				color="secondary"
 				size="medium"
-				defaultPage={page}
+				defaultPage={page ? page : 1}
 				onChange={handlePagination}
 			/>
 		</Stack>

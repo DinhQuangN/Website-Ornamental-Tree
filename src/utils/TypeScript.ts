@@ -85,9 +85,16 @@ export interface IOrder {
 	status: string;
 	email: string;
 	products: ICart[];
+	describe: string;
 	createdAt?: string;
 }
 export interface IOrders {
 	products: IOrder[];
 	total: number;
+}
+export interface ICheckOut {
+	name: string;
+	address: string;
+	email: string;
+	describe: string;
 }

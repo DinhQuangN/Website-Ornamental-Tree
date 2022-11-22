@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useAppSelector } from '../../hooks/useTypedSelector';
 import { postAPI } from '../../Request';
-import { FormSubmit, InputChange } from '../../utils/TypeScript';
-import { vnd } from '../../utils/Valid';
+import { FormSubmit, ICheckOut, InputChange } from '../../utils/TypeScript';
+import { checkOrder, vnd } from '../../utils/Valid';
 
 const CARD_OPTIONS = {
 	style: {
@@ -37,7 +37,7 @@ const CheckOut: React.FC<IProps> = ({ setOpen, totalMoney }) => {
 		email: ''
 	};
 	const [stripeToken, setStripeToken] = useState<string | undefined>();
-	const [data, setData] = useState(initialState);
+	const [data, setData] = useState<ICheckOut>(initialState);
 	const { auth, cart } = useAppSelector(state => state);
 	const { name, describe, address, email } = data;
 	const handleOnChange = (e: InputChange) => {
@@ -46,6 +46,7 @@ const CheckOut: React.FC<IProps> = ({ setOpen, totalMoney }) => {
 	};
 	const stripe = useStripe();
 	const elements = useElements();
+	const check = checkOrder(data);
 	const handleSubmit = async (e: FormSubmit) => {
 		e.preventDefault();
 		if (elements == null) return;
@@ -58,6 +59,7 @@ const CheckOut: React.FC<IProps> = ({ setOpen, totalMoney }) => {
 			});
 			if (!error) {
 				try {
+					if (check) return toast.error(check);
 					const { id } = paymentMethod;
 					setStripeToken(id);
 				} catch (error: any) {
@@ -101,6 +103,7 @@ const CheckOut: React.FC<IProps> = ({ setOpen, totalMoney }) => {
 					},
 					auth.data?.access_token
 				);
+				window.location.href = '/success';
 			}, 2500);
 	}, [stripeToken]);
 	return (
@@ -121,7 +124,7 @@ const CheckOut: React.FC<IProps> = ({ setOpen, totalMoney }) => {
 					/>
 					<input
 						type="text"
-						placeholder="Email or Phone"
+						placeholder="Số điện thoại"
 						name="email"
 						value={email}
 						onChange={handleOnChange}

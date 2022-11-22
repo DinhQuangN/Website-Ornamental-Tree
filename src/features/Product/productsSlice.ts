@@ -12,7 +12,7 @@ export const getProducts = createAsyncThunk(
 		try {
 			let limit = 5;
 			let value = search ? search : `?page=${1}`;
-			const response = await getAPI(`get_products/${value}$limit=${limit}`);
+			const response = await getAPI(`get_products/${value}&limit=${limit}`);
 			return response.data;
 		} catch (error: any) {
 			return thunkApi.rejectWithValue(error.message);

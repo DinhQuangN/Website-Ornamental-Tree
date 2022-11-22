@@ -89,7 +89,7 @@ const CreateUpdateProduct: React.FC<IProps> = ({
 			dispatch(
 				createProduct({ ...newData, access_token: auth.data.access_token })
 			);
-		} else {
+		} else if (!data) {
 			dispatch(
 				updateProducts({
 					...newData,
@@ -111,6 +111,9 @@ const CreateUpdateProduct: React.FC<IProps> = ({
 				<div className="close">
 					<i className="fas fa-times" onClick={() => setClose(true)}></i>
 				</div>
+				<h2 style={{ fontSize: '23px' }}>
+					{productId ? 'Sửa sản phẩm' : 'Thêm sản phẩm'}
+				</h2>
 				<h3>Nhập tên sản phẩm</h3>
 				<TextField
 					variant="outlined"

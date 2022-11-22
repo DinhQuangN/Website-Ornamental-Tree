@@ -17,17 +17,18 @@ interface IProps {
 	isActive: boolean;
 	setClose: (value: boolean) => void;
 }
-interface ICate {
+export interface ICate {
 	name: string;
 	role: number;
+	id: string;
 }
 const CreateUpdateCategory: React.FC<IProps> = ({
 	isActive,
 	products,
 	setClose
 }) => {
-	const [cate, setCate] = useState<ICate>({ name: '', role: 0 });
-	const { name, role } = cate;
+	const [cate, setCate] = useState<ICate>({ name: '', role: 0, id: '' });
+	const { name, role, id } = cate;
 	const { category, auth } = useAppSelector(state => state);
 	const dispatch = useAppDispatch();
 	const handleChangeInput = (e: InputChange) => {
@@ -48,7 +49,8 @@ const CreateUpdateCategory: React.FC<IProps> = ({
 		const newData = {
 			...cate,
 			name,
-			role
+			role,
+			id
 		};
 		const data = checkCategory(newData);
 		toast.error(data);
@@ -56,7 +58,7 @@ const CreateUpdateCategory: React.FC<IProps> = ({
 			dispatch(
 				createCategory({ ...newData, access_token: auth.data?.access_token })
 			);
-		} else {
+		} else if (!data) {
 			dispatch(
 				updateCategory({
 					...newData,
@@ -65,7 +67,7 @@ const CreateUpdateCategory: React.FC<IProps> = ({
 				})
 			);
 		}
-		setCate({ name: '', role: 0 });
+		setCate({ name: '', role: 0, id: '' });
 		setClose(true);
 	};
 	return (
@@ -74,7 +76,10 @@ const CreateUpdateCategory: React.FC<IProps> = ({
 				<div className="close">
 					<i className="fas fa-times" onClick={() => setClose(true)}></i>
 				</div>
-				<h3>Nhập tên category</h3>
+				<h2 style={{ fontSize: '23px' }}>
+					{products ? 'Sửa loại sản phẩm' : 'Thêm loại sản phẩm'}
+				</h2>
+				<h3>Nhập tên loại sản phẩm</h3>
 				<TextField
 					variant="outlined"
 					label="name"
@@ -85,12 +90,23 @@ const CreateUpdateCategory: React.FC<IProps> = ({
 					onChange={handleChangeInput}
 					style={{ backgroundColor: '#fff', fontSize: '1.3rem', width: '90%' }}
 				/>
-				<h3>Chon loại</h3>
+				<h3>Chon loại sản phẩm</h3>
 				<select onChange={handleChangeInput} name="role" value={role}>
 					<option value="0">Chọn loại</option>
 					<option value="1">Cây cảnh</option>
 					<option value="2">Chậu cảnh</option>
 				</select>
+				<h3>Nhập mã loại sản phẩm</h3>
+				<TextField
+					variant="outlined"
+					label="id"
+					InputLabelProps={{ style: { fontSize: 15 } }}
+					inputProps={{ style: { fontSize: 15 } }}
+					name="id"
+					value={id}
+					onChange={handleChangeInput}
+					style={{ backgroundColor: '#fff', fontSize: '1.3rem', width: '90%' }}
+				/>
 				<button
 					style={{
 						color: '#000',

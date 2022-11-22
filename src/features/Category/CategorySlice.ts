@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import { deleteAPI, getAPI, patchAPI, postAPI } from '../../Request';
 import { IAccessToken, ICategory } from '../../utils/TypeScript';
 
@@ -20,6 +21,7 @@ export const createCategory = createAsyncThunk(
 			await postAPI('create_category', data, data.access_token);
 			window.location.href = '/admin/loai-san-pham';
 		} catch (error: any) {
+			toast.error('Loại sản phẩm này đã tồn tại');
 			return thunkApi.rejectWithValue(error.message);
 		}
 	}

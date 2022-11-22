@@ -25,6 +25,7 @@ import Home from './pages/Home';
 import Introduce from './pages/Introduce';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Success from './pages/Success';
 
 const App: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -52,6 +53,7 @@ const App: React.FC = () => {
 					<Route path="/phu-kien-cay-canh" element={<Accessory />} />
 					<Route path="/chuyen-muc/:id" element={<ProductByCategory />} />
 					<Route path="/gio-hang" element={<Cart />} />
+					<Route path="/success" element={<Success />} />
 					<Route path="/admin">
 						<Route path="" index element={<Manager />} />
 						<Route path="phu-kien-san-pham" element={<AccessoryAdmin />} />
