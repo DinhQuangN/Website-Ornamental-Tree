@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import mongoose from 'mongoose';
 import { IReqAuth } from '../config/interface';
 import OrderMessage from '../models/orderModel';
 const Pagination = (req: Request) => {
@@ -81,6 +82,86 @@ export const getOrder = async (req: Request, res: Response) => {
 			total = Math.floor(count / limit) + 1;
 		}
 		res.status(200).json({ products, total });
+	} catch (error: any) {
+		res.status(500).json({ message: error.message });
+	}
+};
+export const getOrderByUser = async (req: Request, res: Response) => {
+	const { limit, skip } = Pagination(req);
+	try {
+		const data = await OrderMessage.aggregate([
+			{
+				$facet: {
+					totalData: [
+						{
+							$match: {
+								userId: new mongoose.Types.ObjectId(req.params.userId)
+							}
+						},
+						{
+							$sort: { createdAt: -1 }
+						},
+						{ $skip: skip },
+						{ $limit: limit }
+					],
+					totalCount: [
+						{
+							$match: {
+								userId: new mongoose.Types.ObjectId(req.params.userId)
+							}
+						},
+						{
+							$count: 'count'
+						}
+					]
+				}
+			},
+			{
+				$project: {
+					count: { $arrayElemAt: ['$totalCount.count', 0] },
+					totalData: 1
+				}
+			}
+		]);
+		const products = data[0].totalData;
+		const count = data[0].count;
+		let total = 0;
+		if (count % limit === 0) {
+			total = count / limit;
+		} else {
+			total = Math.floor(count / limit) + 1;
+		}
+		res.status(200).json({ products, total });
+	} catch (error: any) {
+		res.status(500).json({ message: error.message });
+	}
+};
+export const groupDate = async (req: Request, res: Response) => {
+	try {
+		const data = await OrderMessage.aggregate([
+			{
+				$project: {
+					createdAt: {
+						$dateToString: {
+							format: '%Y-%m-%d',
+							date: '$createdAt'
+						}
+					}
+				}
+			},
+			{
+				$group: {
+					_id: '$createdAt',
+					count: { $sum: 1 }
+				}
+			},
+			{
+				$sort: {
+					_id: 1
+				}
+			}
+		]);
+		res.status(200).json(data);
 	} catch (error: any) {
 		res.status(500).json({ message: error.message });
 	}

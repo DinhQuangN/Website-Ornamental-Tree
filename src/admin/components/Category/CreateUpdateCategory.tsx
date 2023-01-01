@@ -1,5 +1,5 @@
 import { TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { toast } from 'react-toastify';
 import {
 	createCategory,
@@ -27,7 +27,7 @@ const CreateUpdateCategory: React.FC<IProps> = ({
 	products,
 	setClose
 }) => {
-	const [cate, setCate] = useState<ICate>({ name: '', role: 0, id: '' });
+	const [cate, setCate] = React.useState<ICate>({ name: '', role: 0, id: '' });
 	const { name, role, id } = cate;
 	const { category, auth } = useAppSelector(state => state);
 	const dispatch = useAppDispatch();
@@ -36,7 +36,7 @@ const CreateUpdateCategory: React.FC<IProps> = ({
 		setCate({ ...cate, [name]: value });
 	};
 	const data = products ? category.data?.find(p => p._id === products) : null;
-	useEffect(() => {
+	React.useEffect(() => {
 		if (!products) return;
 		if (!data) return;
 		setCate({

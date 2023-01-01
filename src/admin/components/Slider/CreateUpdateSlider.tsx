@@ -1,5 +1,5 @@
 import { Box, CircularProgress } from '@mui/material';
-import React, { useLayoutEffect, useState } from 'react';
+import React from 'react';
 import { createSlider, updateSlider } from '../../../features/Slide/SlideSlice';
 import {
 	useAppDispatch,
@@ -18,11 +18,11 @@ const CreateUpdateSlider: React.FC<IProps> = ({
 	products,
 	setClose
 }) => {
-	const [image, setImage] = useState<string>();
+	const [image, setImage] = React.useState<string>();
 	const { auth, slide } = useAppSelector(state => state);
 	const dispatch = useAppDispatch();
 	const slider = products ? slide.data?.find(p => p._id === products) : null;
-	useLayoutEffect(() => {
+	React.useLayoutEffect(() => {
 		if (!slider) return;
 		setImage(slider.image);
 	}, [slider]);

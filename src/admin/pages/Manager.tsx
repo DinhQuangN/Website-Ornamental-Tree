@@ -1,6 +1,7 @@
 import React from 'react';
 import NotFound from '../../components/NotFound';
 import { useAppSelector } from '../../hooks/useTypedSelector';
+import FormStatistical from '../components/Statistical/FormStatistical';
 import AdminList from './AdminList';
 
 const Manager: React.FC = () => {
@@ -13,7 +14,9 @@ const Manager: React.FC = () => {
 				<div className="adminContainer">
 					<div className="adminNav">
 						<AdminList dash={isActive} />
-						{/* <AdminRight /> */}
+						<div style={{ width: '100%' }}>
+							<FormStatistical />
+						</div>
 					</div>
 				</div>
 			) : (

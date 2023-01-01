@@ -1,5 +1,5 @@
 import { TextField } from '@mui/material';
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import {
 	createAccessory,
 	updateAccessory
@@ -23,9 +23,9 @@ const CreateUpdateAccessory: React.FC<IProps> = ({
 	isActive,
 	setClose
 }) => {
-	const [image, setImage] = useState<IImage[]>([]);
-	const [textDescribe, setTextDescribe] = useState<string>('');
-	const [textDetail, setTextDetail] = useState<string>('');
+	const [image, setImage] = React.useState<IImage[]>([]);
+	const [textDescribe, setTextDescribe] = React.useState<string>('');
+	const [textDetail, setTextDetail] = React.useState<string>('');
 	const { auth, accessory } = useAppSelector(state => state);
 	const initialState = {
 		title: '',
@@ -34,10 +34,10 @@ const CreateUpdateAccessory: React.FC<IProps> = ({
 		imageArray: image,
 		detail: ''
 	};
-	const [product, setProduct] = useState<IAccessory>(initialState);
+	const [product, setProduct] = React.useState<IAccessory>(initialState);
 	const { title, price, imageArray } = product;
-	const divRefDescribe = useRef(null);
-	const divRefDetail = useRef(null);
+	const divRefDescribe = React.useRef(null);
+	const divRefDetail = React.useRef(null);
 	const dispatch = useAppDispatch();
 	const handleChangeImage = async (e: InputChange) => {
 		const target = e.target as HTMLInputElement;
@@ -55,7 +55,7 @@ const CreateUpdateAccessory: React.FC<IProps> = ({
 	const data = products
 		? accessory.data?.products.find(p => p._id === products)
 		: null;
-	useEffect(() => {
+	React.useEffect(() => {
 		if (!products) return;
 		if (!data) return;
 		setProduct({

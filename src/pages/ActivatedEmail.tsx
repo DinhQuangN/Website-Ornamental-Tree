@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { postAPI } from '../Request';
@@ -6,7 +6,7 @@ import { postAPI } from '../Request';
 const ActivatedEmail: React.FC = () => {
 	const { active_token } = useParams();
 	console.log(active_token);
-	useEffect(() => {
+	React.useEffect(() => {
 		if (active_token) {
 			const active = async () => {
 				try {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { getProductByCategory } from '../../features/Product/ProductByCategorySlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/useTypedSelector';
@@ -13,18 +13,18 @@ const ProductByCategory: React.FC = () => {
 	const paramsId = id && removeVietnamese(id);
 	const { category, productByCategory } = useAppSelector(state => state);
 	const dispatch = useAppDispatch();
-	const [categoryId, setCategoryId] = useState<string>();
-	const [products, setProducts] = useState<IProduct[]>();
-	const [total, setTotal] = useState<number>();
+	const [categoryId, setCategoryId] = React.useState<string>();
+	const [products, setProducts] = React.useState<IProduct[]>();
+	const [total, setTotal] = React.useState<number>();
 	const { search } = useLocation();
-	useEffect(() => {
+	React.useEffect(() => {
 		const data = category.data?.find(
 			item => removeVietnamese(removeVietnameseTones(item.name)) === paramsId
 		);
 		if (!data) return;
 		setCategoryId(data._id);
 	}, [paramsId, category.data]);
-	useEffect(() => {
+	React.useEffect(() => {
 		if (!categoryId) return;
 		if (productByCategory.data?.id !== categoryId) {
 			dispatch(getProductByCategory({ id: categoryId, search }));

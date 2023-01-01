@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { signIn } from '../features/Auth/AuthSlice';
 import { useAppDispatch, useAppSelector } from '../hooks/useTypedSelector';
 import { FormSubmit, InputChange } from '../utils/TypeScript';
 
 const Login: React.FC = () => {
-	const [user, setUser] = useState({ account: '', password: '' });
-	const [typePass, setTypePass] = useState<boolean>(false);
+	const [user, setUser] = React.useState({ account: '', password: '' });
+	const [typePass, setTypePass] = React.useState<boolean>(false);
 	const { auth } = useAppSelector(state => state);
 	const dispatch = useAppDispatch();
 	const { account, password } = user;

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { logout } from '../../features/Auth/AuthSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/useTypedSelector';
 
 const Header: React.FC = () => {
 	const { auth, cart } = useAppSelector(state => state);
-	const [clickUser, setClickUser] = useState<boolean>(false);
+	const [clickUser, setClickUser] = React.useState<boolean>(false);
 	const dispatch = useAppDispatch();
 	const handleLogout = () => {
 		if (!auth.data?.access_token) return;
@@ -47,6 +47,11 @@ const Header: React.FC = () => {
 									</Link>
 								</li>
 							)}
+							<li>
+								<Link to="/history">
+									<i className="fas fa-sign-out-alt"></i>Lịch sử mua hàng
+								</Link>
+							</li>
 							<li>
 								<Link to="#" onClick={handleLogout}>
 									<i className="fas fa-sign-out-alt"></i>Đăng xuất

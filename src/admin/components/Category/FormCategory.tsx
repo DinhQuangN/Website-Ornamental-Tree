@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { deleteCategory } from '../../../features/Category/CategorySlice';
 import {
 	useAppDispatch,
@@ -8,8 +8,8 @@ import { ICategory } from '../../../utils/TypeScript';
 import CreateUpdateCategory from './CreateUpdateCategory';
 
 const FormCategory: React.FC = () => {
-	const [open, setOpen] = useState<boolean>(true);
-	const [currentId, setCurrentId] = useState<string>();
+	const [open, setOpen] = React.useState<boolean>(true);
+	const [currentId, setCurrentId] = React.useState<string>();
 	const { category, auth } = useAppSelector(state => state);
 	const dispatch = useAppDispatch();
 	const handleCreate = () => {

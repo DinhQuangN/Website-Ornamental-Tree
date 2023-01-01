@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../hooks/useTypedSelector';
 import { ICategory } from '../../utils/TypeScript';
 import { removeVietnameseTones } from '../../utils/Valid';
 
 const Navbar: React.FC = () => {
-	const [scroll, setScroll] = useState<boolean>(false);
-	const [menu, setMenu] = useState<boolean>(false);
+	const [scroll, setScroll] = React.useState<boolean>(false);
+	const [menu, setMenu] = React.useState<boolean>(false);
 	const { category } = useAppSelector(state => state);
-	useEffect(() => {
+	React.useEffect(() => {
 		window.addEventListener('scroll', () => {
 			if (
 				document.body.scrollTop > 91 ||

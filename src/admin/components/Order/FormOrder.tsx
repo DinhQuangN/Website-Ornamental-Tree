@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Pagination from '../../../components/Pagination/Pagination';
 import { getAPI } from '../../../Request';
@@ -6,7 +6,7 @@ import { IOrders } from '../../../utils/TypeScript';
 import { vnd } from '../../../utils/Valid';
 
 const FormOrder: React.FC = () => {
-	const [order, setOrder] = useState<IOrders>();
+	const [order, setOrder] = React.useState<IOrders>();
 	const { search } = useLocation();
 	const handlePagination = (num: number) => {
 		const search = `?page=${num}`;
@@ -19,11 +19,10 @@ const FormOrder: React.FC = () => {
 		setOrder(res.data);
 	};
 
-	useLayoutEffect(() => {
+	React.useLayoutEffect(() => {
 		getOder(search);
 	}, []);
 
-	console.log(order);
 	return (
 		<div className="productAdmin">
 			<div className="productAdminNav">

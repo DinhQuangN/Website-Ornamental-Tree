@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Pagination from '../../../components/Pagination/Pagination';
 import {
@@ -14,17 +14,17 @@ import { InputChange, IProduct } from '../../../utils/TypeScript';
 import CreateUpdateAccessory from './CreateUpdateAccessory';
 
 const FormAccessory: React.FC = () => {
-	const [open, setOpen] = useState<boolean>(true);
-	const [currentId, setCurrentId] = useState<string>();
+	const [open, setOpen] = React.useState<boolean>(true);
+	const [currentId, setCurrentId] = React.useState<string>();
 	const { accessory, auth } = useAppSelector(state => state);
 	const dispatch = useAppDispatch();
-	const [searchAcc, setSearchAcc] = useState<string>('');
+	const [searchAcc, setSearchAcc] = React.useState<string>('');
 	const { search } = useLocation();
 	const handleCreate = () => {
 		setOpen(!open);
 		setCurrentId(undefined);
 	};
-	useEffect(() => {
+	React.useEffect(() => {
 		dispatch(getAccessory(search));
 	}, [dispatch, search]);
 	const handlePagination = (num: number) => {

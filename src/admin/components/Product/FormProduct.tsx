@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Pagination from '../../../components/Pagination/Pagination';
 import {
@@ -14,12 +14,12 @@ import { vnd } from '../../../utils/Valid';
 import CreateUpdateProduct from './CreateUpdateProduct';
 
 const FormProduct: React.FC = () => {
-	const [open, setOpen] = useState<boolean>(true);
-	const [currentId, setCurrentId] = useState<string>();
+	const [open, setOpen] = React.useState<boolean>(true);
+	const [currentId, setCurrentId] = React.useState<string>();
 	const { auth, products } = useAppSelector(state => state);
 	const dispatch = useAppDispatch();
 	const { search } = useLocation();
-	useEffect(() => {
+	React.useEffect(() => {
 		dispatch(getProducts(search));
 	}, [dispatch, search]);
 	const handleCreate = () => {

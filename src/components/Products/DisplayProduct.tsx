@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation, Thumbs } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -10,7 +10,7 @@ interface IProps {
 	product: IProduct;
 }
 const DisplayProduct: React.FC<IProps> = ({ product }) => {
-	const [quantity, setQuantity] = useState(1);
+	const [quantity, setQuantity] = React.useState(1);
 	const dispatch = useAppDispatch();
 	const handleQuantity = (type: any) => {
 		if (type === 'dec') {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { deleteSlider } from '../../../features/Slide/SlideSlice';
 import {
 	useAppDispatch,
@@ -8,8 +8,8 @@ import { ISlide } from '../../../utils/TypeScript';
 import CreateUpdateSlider from './CreateUpdateSlider';
 
 const FormSlider: React.FC = () => {
-	const [open, setOpen] = useState<boolean>(true);
-	const [currentId, setCurrentId] = useState<string>();
+	const [open, setOpen] = React.useState<boolean>(true);
+	const [currentId, setCurrentId] = React.useState<string>();
 	const { slide, auth } = useAppSelector(state => state);
 	const dispatch = useAppDispatch();
 	const handleCreate = () => {

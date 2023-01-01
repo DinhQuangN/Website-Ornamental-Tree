@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { signUp } from '../features/Auth/AuthSlice';
@@ -7,15 +7,15 @@ import { FormSubmit, InputChange, IRegisterUser } from '../utils/TypeScript';
 import { checkInput } from '../utils/Valid';
 
 const Register: React.FC = () => {
-	const [user, setUser] = useState<IRegisterUser>({
+	const [user, setUser] = React.useState<IRegisterUser>({
 		firstName: '',
 		lastName: '',
 		confirmPassword: '',
 		account: '',
 		password: ''
 	});
-	const [typePass, setTypePass] = useState<boolean>(false);
-	const [typeCfPass, setCfTypePass] = useState<boolean>(false);
+	const [typePass, setTypePass] = React.useState<boolean>(false);
+	const [typeCfPass, setCfTypePass] = React.useState<boolean>(false);
 	const dispatch = useAppDispatch();
 	const { account, password, firstName, lastName, confirmPassword } = user;
 	const handleChangeInput = (e: InputChange) => {

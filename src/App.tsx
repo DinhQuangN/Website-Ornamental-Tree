@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import AccessoryAdmin from './admin/components/Accessory/Accessory';
@@ -21,6 +21,7 @@ import Accessory from './pages/Accessory';
 import ActivatedEmail from './pages/ActivatedEmail';
 import Cart from './pages/Cart';
 import Detail from './pages/Detail';
+import History from './pages/History';
 import Home from './pages/Home';
 import Introduce from './pages/Introduce';
 import Login from './pages/Login';
@@ -29,7 +30,7 @@ import Success from './pages/Success';
 
 const App: React.FC = () => {
 	const dispatch = useAppDispatch();
-	useEffect(() => {
+	React.useEffect(() => {
 		dispatch(getCategory());
 		dispatch(getProduct());
 		dispatch(getSlide());
@@ -54,6 +55,7 @@ const App: React.FC = () => {
 					<Route path="/chuyen-muc/:id" element={<ProductByCategory />} />
 					<Route path="/gio-hang" element={<Cart />} />
 					<Route path="/success" element={<Success />} />
+					<Route path="/history" element={<History />} />
 					<Route path="/admin">
 						<Route path="" index element={<Manager />} />
 						<Route path="phu-kien-san-pham" element={<AccessoryAdmin />} />

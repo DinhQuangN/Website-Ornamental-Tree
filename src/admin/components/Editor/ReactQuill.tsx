@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React from 'react';
 import Quill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { toast } from 'react-toastify';
@@ -29,8 +29,8 @@ const ReactQuill: React.FC<IProps> = ({ body, setBody }) => {
 	const modules = {
 		toolbar: { container }
 	};
-	const quillRef = useRef<Quill>(null);
-	const handleChangeImage = useCallback(() => {
+	const quillRef = React.useRef<Quill>(null);
+	const handleChangeImage = React.useCallback(() => {
 		const input = document.createElement('input');
 		input.type = 'file';
 		input.accept = 'image/*';
@@ -49,7 +49,7 @@ const ReactQuill: React.FC<IProps> = ({ body, setBody }) => {
 			}
 		};
 	}, []);
-	useEffect(() => {
+	React.useEffect(() => {
 		const quill = quillRef.current;
 		if (!quill) return;
 		let toolbar = quill.getEditor().getModule('toolbar');

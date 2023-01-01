@@ -1,5 +1,5 @@
 import { TextField } from '@mui/material';
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import { toast } from 'react-toastify';
 import { createProduct } from '../../../features/Product/ProductSlice';
 import { updateProducts } from '../../../features/Product/productsSlice';
@@ -27,9 +27,9 @@ const CreateUpdateProduct: React.FC<IProps> = ({
 	isActive,
 	setClose
 }) => {
-	const [image, setImage] = useState<IImage[]>([]);
-	const [textDescribe, setTextDescribe] = useState<string>('');
-	const [textDetail, setTextDetail] = useState<string>('');
+	const [image, setImage] = React.useState<IImage[]>([]);
+	const [textDescribe, setTextDescribe] = React.useState<string>('');
+	const [textDetail, setTextDetail] = React.useState<string>('');
 	const { auth, category, products } = useAppSelector(state => state);
 	const initialState = {
 		_id: '',
@@ -41,15 +41,15 @@ const CreateUpdateProduct: React.FC<IProps> = ({
 		detail: '',
 		category: ''
 	};
-	const [product, setProduct] = useState<IProduct>(initialState);
+	const [product, setProduct] = React.useState<IProduct>(initialState);
 	const { title, price, imageArray } = product;
-	const divRefDescribe = useRef(null);
-	const divRefDetail = useRef(null);
+	const divRefDescribe = React.useRef(null);
+	const divRefDetail = React.useRef(null);
 	const dispatch = useAppDispatch();
 	const data = productId
 		? products.data?.products.find(p => p._id === productId)
 		: null;
-	useEffect(() => {
+	React.useEffect(() => {
 		if (!productId) return;
 		if (!data) return;
 		setProduct({

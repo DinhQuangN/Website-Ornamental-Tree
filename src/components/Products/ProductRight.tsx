@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { vnd } from '../../utils/Valid';
+import { removeVietnameseTones, vnd } from '../../utils/Valid';
 import { IProduct } from './../../utils/TypeScript';
 
 interface IProps {
@@ -26,7 +26,10 @@ const ProductRight: React.FC<IProps> = ({ product }) => {
 					<Link to="/gio-hang" onClick={handleClick}>
 						<i className="fas fa-shopping-cart"></i>
 					</Link>
-					<Link to={`/san-pham/${product._id}`}>
+					<Link
+						to={`/san-pham/${removeVietnameseTones(product.title)}`}
+						state={product._id}
+					>
 						<i className="fas fa-eye"></i>
 					</Link>
 				</div>

@@ -1,5 +1,5 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { toast } from 'react-toastify';
 import { useAppSelector } from '../../hooks/useTypedSelector';
 import { postAPI } from '../../Request';
@@ -36,8 +36,8 @@ const CheckOut: React.FC<IProps> = ({ setOpen, totalMoney }) => {
 		address: '',
 		email: ''
 	};
-	const [stripeToken, setStripeToken] = useState<string | undefined>();
-	const [data, setData] = useState<ICheckOut>(initialState);
+	const [stripeToken, setStripeToken] = React.useState<string | undefined>();
+	const [data, setData] = React.useState<ICheckOut>(initialState);
 	const { auth, cart } = useAppSelector(state => state);
 	const { name, describe, address, email } = data;
 	const handleOnChange = (e: InputChange) => {
@@ -71,7 +71,7 @@ const CheckOut: React.FC<IProps> = ({ setOpen, totalMoney }) => {
 		}
 	};
 
-	useEffect(() => {
+	React.useEffect(() => {
 		const makeRequest = async () => {
 			try {
 				await postAPI('payment', {
@@ -88,7 +88,7 @@ const CheckOut: React.FC<IProps> = ({ setOpen, totalMoney }) => {
 		setStripeToken('');
 		setOpen(false);
 	}, [stripeToken, totalMoney]);
-	useEffect(() => {
+	React.useEffect(() => {
 		stripeToken &&
 			setTimeout(async () => {
 				await postAPI(
