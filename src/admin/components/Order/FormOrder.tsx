@@ -26,10 +26,10 @@ const FormOrder: React.FC = () => {
 	return (
 		<div className="productAdmin">
 			<div className="productAdminNav">
-				<div className="productAdminSearch">
+				{/* <div className="productAdminSearch">
 					<input type="text" placeholder="Search" />
 					<i className="fas fa-search"></i>
-				</div>
+				</div> */}
 			</div>
 			<div className="productAdminTable">
 				<div style={{ width: '100%' }}>
@@ -43,6 +43,7 @@ const FormOrder: React.FC = () => {
 									<th>Sản phẩm</th>
 									<th>Tổng tiền</th>
 									<th>Trạng thái</th>
+									<th>Địa chỉ</th>
 									<th>Ngày mua</th>
 								</tr>
 							</thead>
@@ -115,6 +116,7 @@ const FormOrder: React.FC = () => {
 										</td>
 										<td>{vnd(item.total)}</td>
 										<td>{item.status ? 'Đã thanh toán' : 'Chưa thanh toán'}</td>
+										<td>{item.address}</td>
 										<td>
 											{new Date(item.createdAt as string).toLocaleDateString()}
 										</td>

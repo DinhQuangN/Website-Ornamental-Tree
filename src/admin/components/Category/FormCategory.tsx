@@ -31,12 +31,12 @@ const FormCategory: React.FC = () => {
 			window.location.href = '/admin/loai-san-pham';
 		}
 	};
-	const handleSearch = () => {};
+	// const handleSearch = () => {};
 	return (
 		<div className="productAdmin">
 			<div className="productAdminNav">
 				<button onClick={handleCreate}>Thêm loại sản phẩm</button>
-				<div className="productAdminSearch">
+				{/* <div className="productAdminSearch">
 					<input
 						type="text"
 						placeholder="Search"
@@ -45,7 +45,7 @@ const FormCategory: React.FC = () => {
 						// onKeyDown={handleKeyDown}
 					/>
 					<i className="fas fa-search" onClick={handleSearch}></i>
-				</div>
+				</div> */}
 			</div>
 			<div className="productAdminTable">
 				<div style={{ width: '100%' }}>

@@ -10,7 +10,7 @@ import {
 	useAppDispatch,
 	useAppSelector
 } from '../../../hooks/useTypedSelector';
-import { InputChange, IProduct } from '../../../utils/TypeScript';
+import { IProduct } from '../../../utils/TypeScript';
 import CreateUpdateAccessory from './CreateUpdateAccessory';
 
 const FormAccessory: React.FC = () => {
@@ -61,7 +61,7 @@ const FormAccessory: React.FC = () => {
 		<div className="productAdmin">
 			<div className="productAdminNav">
 				<button onClick={handleCreate}>Thêm sản phẩm</button>
-				<div className="productAdminSearch">
+				{/* <div className="productAdminSearch">
 					<input
 						type="text"
 						placeholder="Search"
@@ -70,7 +70,7 @@ const FormAccessory: React.FC = () => {
 						onKeyDown={handleKeyDown}
 					/>
 					<i className="fas fa-search" onClick={handleSearch}></i>
-				</div>
+				</div> */}
 			</div>
 			<div className="productAdminTable">
 				<div style={{ width: '100%' }}>

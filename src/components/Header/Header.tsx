@@ -16,7 +16,7 @@ const Header: React.FC = () => {
 			<div className="top-header container-header">
 				<div className="hotline">
 					<Link to="#">
-						<i className="fas fa-phone-alt"></i>Hotline: <span>0123456789</span>
+						<i className="fas fa-phone-alt"></i>Hotline: <span>0384589790</span>
 					</Link>
 				</div>
 
@@ -27,7 +27,7 @@ const Header: React.FC = () => {
 							<p>{auth.data.user.name}</p>
 						</div>
 						<ul style={clickUser ? { display: 'block' } : { display: 'none' }}>
-							<li>
+							{/* <li>
 								<Link
 									to="/profile"
 									state={auth}
@@ -35,7 +35,7 @@ const Header: React.FC = () => {
 								>
 									<i className="fas fa-sign-in-alt"></i>Thông tin tài khoản
 								</Link>
-							</li>
+							</li> */}
 							{auth.data.user.role === 'admin' && (
 								<li>
 									<Link

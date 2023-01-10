@@ -16,6 +16,7 @@ const Slider: React.FC = () => {
 				pagination={{ clickable: true }}
 				navigation={true}
 				autoplay={{ delay: 3000 }}
+				speed={1000}
 				modules={[Pagination, Navigation, Autoplay]}
 				className="slide container"
 			>

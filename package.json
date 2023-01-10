@@ -7,6 +7,7 @@
 		"@emotion/react": "^11.10.4",
 		"@emotion/styled": "^11.10.4",
 		"@mui/material": "^5.10.10",
+		"@react-oauth/google": "^0.5.1",
 		"@reduxjs/toolkit": "^1.8.6",
 		"@stripe/react-stripe-js": "^1.13.0",
 		"@stripe/stripe-js": "^1.42.0",

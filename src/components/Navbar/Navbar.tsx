@@ -28,6 +28,9 @@ const Navbar: React.FC = () => {
 					<span>Menu</span>
 					<ul style={menu ? { display: 'block' } : { display: 'none' }}>
 						<li>
+							<Link to="/">Trang chủ</Link>
+						</li>
+						<li>
 							<Link to="/gioi-thieu">Giới thiệu</Link>
 						</li>
 						<li>
@@ -74,15 +77,12 @@ const Navbar: React.FC = () => {
 						<li>
 							<Link to="/phu-kien-cay-canh">phụ kiện cây cảnh</Link>
 						</li>
-						<li>
-							<Link to="#">hỗ trợ</Link>
-						</li>
-						<li>
-							<Link to="#">liên hệ</Link>
-						</li>
 					</ul>
 				</div>
 				<ul>
+					<li>
+						<Link to="/">Trang chủ</Link>
+					</li>
 					<li>
 						<Link to="/gioi-thieu">Giới thiệu</Link>
 					</li>
@@ -129,12 +129,6 @@ const Navbar: React.FC = () => {
 					</li>
 					<li>
 						<Link to="/phu-kien-cay-canh">phụ kiện cây cảnh</Link>
-					</li>
-					<li>
-						<Link to="#">hỗ trợ</Link>
-					</li>
-					<li>
-						<Link to="#">liên hệ</Link>
 					</li>
 				</ul>
 			</div>

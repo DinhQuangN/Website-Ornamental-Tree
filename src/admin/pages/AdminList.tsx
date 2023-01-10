@@ -7,6 +7,7 @@ interface IAdminList {
 	order?: string;
 	category?: string;
 	accessory?: string;
+	user?: string;
 }
 const AdminList: React.FC<IAdminList> = ({
 	dash,
@@ -14,7 +15,8 @@ const AdminList: React.FC<IAdminList> = ({
 	slide,
 	order,
 	category,
-	accessory
+	accessory,
+	user
 }) => {
 	return (
 		<div className="admin-left">
@@ -36,6 +38,9 @@ const AdminList: React.FC<IAdminList> = ({
 				</li>
 				<li className={accessory}>
 					<Link to="/admin/phu-kien-san-pham">Phụ kiện</Link>
+				</li>
+				<li className={user}>
+					<Link to="/admin/tai-khoan">Tài khoản</Link>
 				</li>
 			</ul>
 		</div>

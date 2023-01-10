@@ -8,6 +8,7 @@ import {
 } from '../config/generateToken';
 import { IDecodedToken, IReqAuth, IUser } from '../config/interface';
 import sendEmail from '../config/sendMail';
+import sendEmailForgotPassword from '../config/sendMailForgotPassword';
 import { validateEmail } from '../middleware/valid';
 import UserMessage from '../models/userModel';
 
@@ -29,7 +30,7 @@ export const Register = async (req: Request, res: Response) => {
 		const active_token = generateActiveToken(newUser);
 		const url = `${CLIENT_URL}/active/${active_token}`;
 		if (validateEmail(account)) {
-			sendEmail(account, url, 'Verify your email address');
+			sendEmail(account, url, 'Xác nhận email');
 			return res
 				.status(200)
 				.json({ message: 'Success! Please check your email' });
@@ -141,4 +142,65 @@ const loginUser = async (user: IUser, password: string, res: Response) => {
 		access_token,
 		user: { ...user._doc, password: '' }
 	});
+};
+export const loginGoogle = async (req: Request, res: Response) => {
+	try {
+		const { name, email, picture } = req.body;
+		const password = email + name + picture;
+		const passwordHash = await bcrypt.hash(password, 12);
+		const user = await UserMessage.findOne({ account: email });
+		if (user) {
+			loginUser(user, password, res);
+		} else {
+			const newUser = new UserMessage({
+				name,
+				account: email,
+				password: passwordHash,
+				avatar: picture
+			});
+			await newUser.save();
+			loginUser(newUser, password, res);
+		}
+	} catch (error: any) {
+		res.status(500).json({ message: error.message });
+	}
+};
+export const forgotPassword = async (req: Request, res: Response) => {
+	try {
+		const { account } = req.body;
+		const user = await UserMessage.findOne({ account: account });
+		if (!user) {
+			return res.status(404).json({ message: 'error' });
+		}
+		const newUser = {
+			id: user.id,
+			account: user.account
+		};
+		const token_id = generateActiveToken(newUser);
+		const url = `${CLIENT_URL}/dat-lai-mat-khau/${token_id}`;
+		if (validateEmail(account)) {
+			sendEmailForgotPassword(account, url, 'Quên mật khẩu');
+			return res
+				.status(200)
+				.json({ message: 'Please check your email address' });
+		}
+	} catch (error: any) {
+		res.status(500).json({ message: error.message });
+	}
+};
+export const resetPassword = async (req: Request, res: Response) => {
+	try {
+		const { token_id, password } = req.body;
+		const data = jwt.verify(token_id, `${process.env.ACTIVE}`) as IDecodedToken;
+		const passwordHash = await bcrypt.hash(password, 12);
+		await UserMessage.findByIdAndUpdate(
+			{ _id: data.id },
+			{
+				password: passwordHash
+			}
+		);
+		res.status(200).json({ message: 'Cập nhật mật khẩu thành công' });
+	} catch (error: any) {
+		res.status(500).json({ message: error.message });
+	}
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import DisplayProduct from '../components/Products/DisplayProduct';
-import ProductRight from '../components/Products/ProductRight';
 import { useAppSelector } from '../hooks/useTypedSelector';
 import { getAPI } from '../Request';
 import { IProduct } from '../utils/TypeScript';
@@ -44,7 +43,7 @@ const Detail: React.FC = () => {
 	return (
 		<>
 			{productDetail && <DisplayProduct product={productDetail} />}
-			<section id="content-page">
+			{/* <section id="content-page">
 				<div className="content-page">
 					<h3>Sản phẩm tương tự</h3>
 					<div className="shop-product">
@@ -60,7 +59,7 @@ const Detail: React.FC = () => {
 						Xem thêm
 					</button>
 				</div>
-			</section>
+			</section> */}
 		</>
 	);
 };

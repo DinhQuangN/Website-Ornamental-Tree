@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import { IReqAuth } from '../config/interface';
+import AccessoryMessage from '../models/accessoryModel';
 import ProductMessage from '../models/productModel';
 
 const Pagination = (req: IReqAuth) => {
@@ -271,6 +272,25 @@ export const deleteProduct = async (req: IReqAuth, res: Response) => {
 	try {
 		await ProductMessage.findByIdAndDelete(req.params.id);
 		res.status(200).json({ message: 'Delete Success' });
+	} catch (error: any) {
+		res.status(500).json({ message: error.message });
+	}
+};
+export const searchProduct = async (req: Request, res: Response) => {
+	try {
+		const search = req.query.search;
+		// const title = new RegExp(`${search}`, 'i');
+		const data = await ProductMessage.find({
+			$text: { $search: search as string }
+		});
+		if (Object.entries(data).length === 0) {
+			console.log('aa');
+			const data1 = await AccessoryMessage.find({
+				$text: { $search: search as string }
+			});
+			return res.status(200).json(data1);
+		}
+		res.status(200).json(data);
 	} catch (error: any) {
 		res.status(500).json({ message: error.message });
 	}

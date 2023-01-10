@@ -30,22 +30,23 @@ const Register: React.FC = () => {
 	};
 	return (
 		<div className="limiter">
+			<title>Đăng kí</title>;
 			<div className="containe">
 				<div className="wrap-login">
 					<form className="login-form validate-form" onSubmit={handleSubmit}>
-						<span className="login-form-title">Login</span>
+						<span className="login-form-title">Đăng kí</span>
 						<div
 							className="wrap-input validate-input"
 							data-validate="Username is reauired"
 						>
-							<span className="label-input">First Name</span>
+							<span className="label-input">Họ</span>
 							<input
 								className="input"
 								type="text"
 								name="firstName"
 								value={firstName}
 								onChange={handleChangeInput}
-								placeholder="Type your first name"
+								placeholder="Nhập họ của bạn"
 							/>
 							<span className="focus-input" data-symbol="&#xf206;"></span>
 						</div>
@@ -53,14 +54,14 @@ const Register: React.FC = () => {
 							className="wrap-input validate-input"
 							data-validate="Username is reauired"
 						>
-							<span className="label-input">LastName</span>
+							<span className="label-input">Tên</span>
 							<input
 								className="input"
 								type="text"
 								name="lastName"
 								value={lastName}
 								onChange={handleChangeInput}
-								placeholder="Type your last name"
+								placeholder="Nhập tên của bạn"
 							/>
 							<span className="focus-input" data-symbol="&#xf206;"></span>
 						</div>
@@ -68,14 +69,14 @@ const Register: React.FC = () => {
 							className="wrap-input validate-input"
 							data-validate="Username is reauired"
 						>
-							<span className="label-input">Username</span>
+							<span className="label-input">Tài khoản</span>
 							<input
 								className="input"
-								type="text"
+								type="email"
 								name="account"
 								value={account}
 								onChange={handleChangeInput}
-								placeholder="abc@gmail.com Or +84123456789"
+								placeholder="Nhập email của bạn"
 							/>
 							<span className="focus-input" data-symbol="&#xf206;"></span>
 						</div>
@@ -83,14 +84,14 @@ const Register: React.FC = () => {
 							className="wrap-input validate-input"
 							data-validate="Password is reauired"
 						>
-							<span className="label-input">Password</span>
+							<span className="label-input">Mật khẩu</span>
 							<input
 								className="input"
 								type={typePass ? 'text' : 'password'}
 								name="password"
 								value={password}
 								onChange={handleChangeInput}
-								placeholder="Type your password"
+								placeholder="Nhập mật khẩu của bạn"
 							/>
 							<span className="focus-input" data-symbol="&#xf190;"></span>
 							<span onClick={() => setTypePass(!typePass)}>
@@ -105,14 +106,14 @@ const Register: React.FC = () => {
 							className="wrap-input validate-input"
 							data-validate="Password is reauired"
 						>
-							<span className="label-input">ConfirmPassword</span>
+							<span className="label-input">Nhập lại mật khẩu</span>
 							<input
 								className="input"
 								type={typeCfPass ? 'text' : 'password'}
 								name="confirmPassword"
 								value={confirmPassword}
 								onChange={handleChangeInput}
-								placeholder="Type your confirm password"
+								placeholder="Nhập lại mật khẩu của bạn"
 							/>
 							<span className="focus-input" data-symbol="&#xf190;"></span>
 							<span onClick={() => setCfTypePass(!typeCfPass)}>
@@ -127,15 +128,15 @@ const Register: React.FC = () => {
 							<div className="wrap-login-form-btn">
 								<div className="login-form-bgbtn"></div>
 								<button className="login-form-btn" type="submit">
-									Register
+									Đăng kí
 								</button>
 							</div>
 						</div>
 						<div className="flex-col-c">
-							<span className="txt1"> Already Have An Account </span>
+							<span className="txt1"> Bạn đã có tài khoản? </span>
 
 							<Link to="/dang-nhap" className="txt2">
-								Sign In
+								Đăng nhập
 							</Link>
 						</div>
 					</form>

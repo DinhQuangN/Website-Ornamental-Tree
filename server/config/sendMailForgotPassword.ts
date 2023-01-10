@@ -7,7 +7,11 @@ const CLIENT_SECRET = `${process.env.MAIL_CLIENT_SECRET}`;
 const REFRESH_TOKEN = `${process.env.MAIL_REFRESH_TOKEN}`;
 const SENDER_MAIL = `${process.env.SEND_MAIL}`;
 
-const sendEmail = async (to: string, url: string, txt: String) => {
+const sendEmailForgotPassword = async (
+	to: string,
+	url: string,
+	txt: String
+) => {
 	const oAuth2Client = new OAuth2Client(
 		CLIENT_ID,
 		CLIENT_SECRET,
@@ -43,10 +47,9 @@ const sendEmail = async (to: string, url: string, txt: String) => {
 			<h2 style="text-align: center; text-transform: uppercase; color: teal">
 				Chào mừng bạn ghé đến cửa hàng cây cảnh của chúng tôi
 			</h2>
-			<p>
-				Bạn bắt đầu sử dụng tài khoản trên website cây cảnh của chúng tôi. Bạn vui lòng nhấn ' Xác nhận email ' bên dưới để có thể sử dụng website cây cảnh
-			</p>
-
+      <p>
+        Bạn quên mật khẩu. Vui lòng Click bên dưới để đặt lại mật khẩu
+      </p>
 			<a
 				href=${url}
 				style="
@@ -67,4 +70,4 @@ const sendEmail = async (to: string, url: string, txt: String) => {
 		console.log(error);
 	}
 };
-export default sendEmail;
+export default sendEmailForgotPassword;

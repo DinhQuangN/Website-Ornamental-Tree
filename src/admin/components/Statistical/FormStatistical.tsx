@@ -15,7 +15,6 @@ const FormStatistical: React.FC = () => {
 		};
 		data();
 	}, []);
-	console.log(data?.map(item => item._id));
 	const chart = {
 		labels: data?.map(item => item._id),
 		datasets: [

@@ -56,13 +56,14 @@
 .right input:focus {
 	outline: none;
 }
-.right span {
+.right button {
 	padding: 12px 10px;
 	background-color: #f28902;
 	font-size: 1.4rem;
 	font-weight: 500;
 	color: #fff;
 	letter-spacing: 0.5px;
+	border: none;
 }
 @media only screen and (max-width: 762px) {
 	#headers {

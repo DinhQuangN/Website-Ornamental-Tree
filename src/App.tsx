@@ -6,11 +6,14 @@ import CategoryAdmin from './admin/components/Category/Category';
 import OrderAdmin from './admin/components/Order/Order';
 import ProductAdmin from './admin/components/Product/Product';
 import SliderAdmin from './admin/components/Slider/Slider';
+import User from './admin/components/User/User';
 import Manager from './admin/pages/Manager';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import HeaderBottom from './components/Header/HeaderBottom';
 import Navbar from './components/Navbar/Navbar';
+import ForgotPassword from './components/Password/ForgotPassword';
+import ResetPassword from './components/Password/ResetPassword';
 import ProductByCategory from './components/Products/ProductByCategory';
 import { refreshToken } from './features/Auth/AuthSlice';
 import { getCategory } from './features/Category/CategorySlice';
@@ -26,6 +29,7 @@ import Home from './pages/Home';
 import Introduce from './pages/Introduce';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Search from './pages/Search';
 import Success from './pages/Success';
 
 const App: React.FC = () => {
@@ -56,6 +60,12 @@ const App: React.FC = () => {
 					<Route path="/gio-hang" element={<Cart />} />
 					<Route path="/success" element={<Success />} />
 					<Route path="/history" element={<History />} />
+					<Route path="/tim-kiem" element={<Search />} />
+					<Route path="/quen-mat-khau" element={<ForgotPassword />} />
+					<Route
+						path="/dat-lai-mat-khau/:token_id"
+						element={<ResetPassword />}
+					/>
 					<Route path="/admin">
 						<Route path="" index element={<Manager />} />
 						<Route path="phu-kien-san-pham" element={<AccessoryAdmin />} />
@@ -63,6 +73,7 @@ const App: React.FC = () => {
 						<Route path="san-pham" element={<ProductAdmin />} />
 						<Route path="slider" element={<SliderAdmin />} />
 						<Route path="order" element={<OrderAdmin />} />
+						<Route path="tai-khoan" element={<User />} />
 					</Route>
 				</Routes>
 				<Footer />

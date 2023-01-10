@@ -39,7 +39,7 @@ const productSlide = createSlice({
 	reducers: {},
 	extraReducers(builder) {
 		builder
-			.addCase(getProduct.pending, (state, action) => {
+			.addCase(getProduct.pending, (state, action: PayloadAction<any>) => {
 				state.loading = true;
 			})
 			.addCase(

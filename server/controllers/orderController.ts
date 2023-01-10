@@ -146,7 +146,7 @@ export const groupDate = async (req: Request, res: Response) => {
 							format: '%Y-%m-%d',
 							date: '$createdAt'
 						}
-					}
+					},
 				}
 			},
 			{

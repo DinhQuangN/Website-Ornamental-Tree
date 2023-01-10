@@ -5,7 +5,6 @@ import { postAPI } from '../Request';
 
 const ActivatedEmail: React.FC = () => {
 	const { active_token } = useParams();
-	console.log(active_token);
 	React.useEffect(() => {
 		if (active_token) {
 			const active = async () => {

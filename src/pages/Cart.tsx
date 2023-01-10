@@ -112,7 +112,10 @@ const Cart: React.FC = () => {
 								Tổng: {vnd(showTotal(cart))} đ
 							</p>
 						</div>
-						<div className="button">
+						<div
+							className="button"
+							style={{ marginTop: '30px', marginBottom: '15px' }}
+						>
 							<div
 								className="check_out"
 								style={open ? {} : { display: 'none' }}
@@ -121,25 +124,47 @@ const Cart: React.FC = () => {
 									<CheckOut setOpen={setOpen} totalMoney={total} />
 								</Elements>
 							</div>
-							<button
-								style={{
-									backgroundColor: '#ff8000',
-									padding: '15px 20px',
-									border: 'none',
-									fontSize: '1.8rem',
-									lineHeight: '1.2',
-									letterSpacing: '0.8px',
-									boxShadow: '0 0 15px 0 rgba(0,0,0,0.2)',
-									marginTop: '15px',
-									borderRadius: '10px',
-									color: '#fff',
-									fontWeight: 500,
-									marginRight: '30px'
-								}}
-								onClick={() => setOpen(!open)}
-							>
-								Thanh toán
-							</button>
+							{auth.data?.user ? (
+								<button
+									style={{
+										backgroundColor: '#ff8000',
+										padding: '15px 20px',
+										border: 'none',
+										fontSize: '1.8rem',
+										lineHeight: '1.2',
+										letterSpacing: '0.8px',
+										boxShadow: '0 0 15px 0 rgba(0,0,0,0.2)',
+										marginTop: '15px',
+										borderRadius: '10px',
+										color: '#fff',
+										fontWeight: 500,
+										marginRight: '30px'
+									}}
+									onClick={() => setOpen(!open)}
+								>
+									Thanh toán
+								</button>
+							) : (
+								<Link
+									to="/dang-nhap"
+									style={{
+										backgroundColor: '#ff8000',
+										padding: '15px 20px',
+										border: 'none',
+										fontSize: '1.8rem',
+										lineHeight: '1.2',
+										letterSpacing: '0.8px',
+										boxShadow: '0 0 15px 0 rgba(0,0,0,0.2)',
+										marginTop: '15px',
+										borderRadius: '10px',
+										color: '#fff',
+										fontWeight: 500,
+										marginRight: '30px'
+									}}
+								>
+									Đăng nhập
+								</Link>
+							)}
 							<Link
 								to="/"
 								style={{

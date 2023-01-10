@@ -108,10 +108,7 @@ const DisplayProduct: React.FC<IProps> = ({ product }) => {
 			<section id="content-page">
 				<div className="content-page">
 					<h3>CHI TIẾT SẢN PHẨM</h3>
-					<button>
-						<i className="fas fa-thumbs-up"></i>Thích
-					</button>
-					<button>Chia sẻ</button>
+
 					<div
 						style={{
 							marginTop: '30px',
@@ -121,8 +118,17 @@ const DisplayProduct: React.FC<IProps> = ({ product }) => {
 						}}
 						dangerouslySetInnerHTML={{ __html: product?.detail }}
 					/>
-					<button className="submit" onClick={handleClick}>
+					{/* <button className="submit" onClick={handleClick}>
 						Mua ngay
+					</button> */}
+					{/* <button>
+						<i className="fas fa-thumbs-up"></i>Thích
+					</button>
+					<button>Chia sẻ</button> */}
+					<button>
+						<Link to="/" style={{ color: '#fff' }}>
+							Xem thêm
+						</Link>
 					</button>
 				</div>
 			</section>

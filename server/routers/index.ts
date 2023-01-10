@@ -5,6 +5,7 @@ import orderRouter from './orderRouter';
 import productRouter from './productRouter';
 import sliderRouter from './sliderRouter';
 import totalRouter from './totalRouter';
+import userRouter from './userRouter';
 
 const routes = [
 	authRouter,
@@ -13,6 +14,7 @@ const routes = [
 	productRouter,
 	sliderRouter,
 	totalRouter,
-	orderRouter
+	orderRouter,
+	userRouter 
 ];
 export default routes;

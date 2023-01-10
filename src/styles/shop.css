@@ -29,11 +29,21 @@
 	text-transform: capitalize;
 	color: #fff;
 }
+.menu-left .accordian-ul li ul {
+	padding-left: 30px;
+	background: #fff;
+}
 .menu-left .accordian-ul li ul li {
 	padding: 8px 10px;
 	background: #fff;
 	border-bottom: 1px solid #eee;
 	transition: 0.3s;
+}
+.menu-left .accordian-ul li ul .active {
+	background: #eee;
+}
+.menu-left .accordian-ul li ul .active a {
+	color: #f28902;
 }
 .menu-left .accordian-ul li ul li:hover {
 	background: #eee;
